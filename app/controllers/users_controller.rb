@@ -59,7 +59,8 @@ class UsersController < ApplicationController
 		end
 
 		def correct_user
-			unless current_user
+			user = User.find(params[:id])
+			unless current_user == user
 				flash[:danger] = "Error."
 				redirect_to root_url
 				
