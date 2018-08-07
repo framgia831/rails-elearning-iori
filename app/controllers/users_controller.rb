@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+	before_action :correct_user, only: [:edit, :update]
+	before_action :require_login, except: [:new, :create]
+
+
 	def new
 		@user = User.new
 	end
@@ -53,5 +57,15 @@ class UsersController < ApplicationController
 		def user_params
 			params.require(:user).permit(:name, :email, :password, :password_confirmation)
 		end
+
+		def correct_user
+			unless current_user
+				flash[:danger] = "Error."
+				redirect_to root_url
+				
+			end
+		end
+
+
 
 end
