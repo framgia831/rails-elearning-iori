@@ -1,0 +1,14 @@
+<li class="col-sm-6">
+	<div class="media">
+		<div class="media-left">
+			<%= gravatar_for(user, 50)%>
+		</div>
+
+
+		<div class="media-body">
+			<h4><%=link_to user.name, user_path(user.id) %></h4>
+				<%= link_to "Delete", user, method: :delete, class: "btn btn-xs btn-warning", data:{confirm: "Are you sure?"} %>
+		</div>
+
+	</div>
+</li>
