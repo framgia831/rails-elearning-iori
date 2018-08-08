@@ -4,4 +4,12 @@ Rails.application.routes.draw do
   
   resources :users
   resources :sessions
+
+  Rails.application.routes.draw do 
+  	namespace :admin do 
+  		resources :users
+  	end
+  end
+
+
 end
