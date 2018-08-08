@@ -7,7 +7,11 @@
 
 		<div class="media-body">
 			<h4><%=link_to user.name, user_path(user.id) %></h4>
+
+			<% if current_user.admin? && current_user != user %>
 				<%= link_to "Delete", user, method: :delete, class: "btn btn-xs btn-warning", data:{confirm: "Are you sure?"} %>
+			<% end %>
+
 		</div>
 
 	</div>
