@@ -11,7 +11,7 @@
 					<li class="nav-item active"><%= link_to "Login",  new_session_path %></li>
 				<% else %>
 					<% if current_user.admin? %>
-						<li class="nav-item active"><%= link_to "Categories", new_admin_user_path %></li>
+						<li class="nav-item active"><%= link_to "Manage Categories", admin_categories_path %></li>
 					<% end %>
 
 					<li class="nav-item active"><%= link_to "Members", users_path %></li>
