@@ -1,1 +1,28 @@
-<h4>Category</h4>
+<div class="col-md-6">
+	<h4>Category</h4>
+	<%= link_to "ADD CATEGORY", new_admin_category_path %>
+
+		<table>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Words</th>
+				<th>Action</th>
+			</tr>
+
+			
+				<% @categories.each do |category| %>
+				<tr>
+					<td><%= category.title %></td>
+					<td><%= category.description %></td>
+					<td>ccccccccc</td>
+					<td>ddddddddd</td>
+				</tr>
+				<% end %>
+				
+				
+			
+
+		</table>
+
+</div>
