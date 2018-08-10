@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-6">
+		<h4>Admin Word Show Page</h4>
+		<%= link_to "ADD WORD", new_admin_category_word_path(@category) %>
+
+			<table class="table">
+				<tr>
+					<th>Word</th>
+					<th>Answer</th>
+					<th>Action</th>
+				</tr>
+
+				
+					<% @word.each do |word| %>
+					<tr>
+						<td><%= word.content %></td>
+						<td>aaaaaaaa</td>
+						<td><%= link_to "Edit", edit_admin_category_word_path(@category, word), class: "btn btn-xs btn-warning" %>
+							<%= link_to "Delete", admin_category_word_path(@category, word),method: :delete, class: "btn btn-xs btn-light", data:{confirm: "Are you sure?"} %>
+						</td>
+					</tr>
+					<% end %>
+			</table>
+	</div>
+</div>
