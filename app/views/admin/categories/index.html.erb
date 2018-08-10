@@ -1,28 +1,25 @@
-<div class="col-md-6">
-	<h4>Category</h4>
-	<%= link_to "ADD CATEGORY", new_admin_category_path %>
+<div class="row">
+	<div class="col-md-6">
+		<h4>Category</h4>
+		<%= link_to "ADD CATEGORY", new_admin_category_path %>
 
-		<table>
-			<tr>
-				<th>Title</th>
-				<th>Description</th>
-				<th>Words</th>
-				<th>Action</th>
-			</tr>
-
-			
-				<% @categories.each do |category| %>
+			<table class="table">
 				<tr>
-					<td><%=link_to category.title, new_admin_category_word_path(category.id) %></td>
-					<td><%= category.description %></td>
-					<td><%= category.words.count %></td>
-					<td>ddddddddd</td>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Words</th>
+					<th>Action</th>
 				</tr>
-				<% end %>
-				
-				
-			
 
-		</table>
-
+				
+					<% @categories.each do |category| %>
+					<tr>
+						<td><%=link_to category.title, new_admin_category_word_path(category.id) %></td>
+						<td><%= category.description %></td>
+						<td><%= category.words.count %></td>
+						<td>ddddddddd</td>
+					</tr>
+					<% end %>
+			</table>
+	</div>
 </div>

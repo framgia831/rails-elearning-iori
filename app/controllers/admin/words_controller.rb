@@ -6,8 +6,8 @@ class Admin::WordsController < ApplicationController
 	end
 
 	def create
-		category = Category.find(params[:category_id])
-		@word = category.words.build(word_params)
+		@category = Category.find(params[:category_id])
+		@word = @category.words.build(word_params)
 
 		if @word.save 
 			flash[:success] = "Successfully saved"  
@@ -21,6 +21,6 @@ class Admin::WordsController < ApplicationController
 
 	private
 		def word_params
-			params.require(:word).permit(words_answers_attributes: [:word_id,:content,:correct])
+			params.require(:word).permit(:content, words_answers_attributes: [:word_id,:content,:correct])
 		end
 end
