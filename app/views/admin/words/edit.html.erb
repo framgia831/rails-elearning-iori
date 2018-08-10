@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="col-xs-6 col-xs-offset-3 ">
+		<h1 class="text-center">Admin Words</h1>
+		
+		<%= form_for ([:admin, @category, @word]) do |f| %>
+			<% if @word.errors.any? %>
+				<div class="alert alert-danger">
+					This form contains <%= pluralize(@word.errors.count, "error") %>
+				</div>
+
+				<ul>
+					<% @word.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+
+			<% end %>
+
+
+			<div class="form-group">
+				<%= f.label :content,"Word" %>
+				<%= f.text_field :content, class:'form-control' %>
+			</div>
+
+			<div class="field">
+				<%=f .fields_for :words_answers do |field| %>
+					<%= field.label :content,"Choices" %>
+
+					<div class="form-group">
+						<%= field.text_field :content, class:'form-control' %>
+					</div>
+
+				<% end %>
+			</div>
+
+			<div class="form-group">
+				<%= f.submit class: 'btn btn-primary form-control'%>
+			</div>
+		<% end %>
+
+	</div>	
+</div>	
