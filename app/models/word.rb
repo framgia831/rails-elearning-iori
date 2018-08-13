@@ -7,6 +7,14 @@ class Word < ApplicationRecord
 
   validate :has_one_correct_answer
 
+  def correct_answer
+  	words_answers.each do |answer|
+  		if answer.correct?
+  			return answer.content
+  		end
+  	end 
+  end
+
   private
 	  def has_one_correct_answer
 	   unless words_answers.collect { |i| i.correct? || nil  }.compact.count == 1
