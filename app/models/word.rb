@@ -3,7 +3,16 @@ class Word < ApplicationRecord
   has_many :words_answers, dependent: :destroy
   accepts_nested_attributes_for :words_answers
 
-  validates :content, presence: true
+  validates :content, presence: true  
+
+  validate :has_one_correct_answer
+
+  private
+	  def has_one_correct_answer
+	   unless words_answers.collect { |i| i.correct? || nil  }.compact.count == 1
+	      errors.add(:word_answers, "should have one correct answer")
+	    end
+	  end
 
   
 end

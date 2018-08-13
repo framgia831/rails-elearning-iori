@@ -20,8 +20,6 @@ class Admin::WordsController < ApplicationController
 	def index
 		@category = Category.find(params[:category_id])
 		@word = @category.words
-
-		
 	end
 
 	def edit
@@ -32,10 +30,11 @@ class Admin::WordsController < ApplicationController
 
 	def update
 		@word = Word.find(params[:id])
+		@category = Category.find(params[:category_id])
 
 		if @word.update_attributes(word_params)
 			flash[:success] = "Successfully updated" 
-			redirect_to edit_admin_category_word_path(@word)
+			redirect_to admin_category_words_path
 		else
 			render 'edit'
 			
