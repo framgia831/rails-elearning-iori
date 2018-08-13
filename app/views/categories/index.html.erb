@@ -1,0 +1,11 @@
+<h1>Categories</h1>
+
+<div class="col-sm-6">
+	<section class="col-sm-12">
+		<% @category.each do |category| %>
+			<h2><%= category.title %></h2>
+			<p><%= category.description %></p>
+			<%= link_to "Learn", "#", class: "btn btn-xs btn-primary" %>
+		<% end %>
+	</section>
+</div>
