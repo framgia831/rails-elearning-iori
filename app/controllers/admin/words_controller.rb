@@ -20,7 +20,6 @@ class Admin::WordsController < ApplicationController
 	def index
 		@category = Category.find(params[:category_id])
 		@word = @category.words
-
 	end
 
 	def edit

@@ -9,7 +9,7 @@ class Word < ApplicationRecord
 
   private
 	  def has_one_correct_answer
-	   unless words_answers.collect { |i| i.correct? || nil  }.compact.any?
+	   unless words_answers.collect { |i| i.correct? || nil  }.compact.count == 1
 	      errors.add(:word_answers, "should have one correct answer")
 	    end
 	  end
