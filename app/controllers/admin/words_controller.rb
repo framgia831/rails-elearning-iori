@@ -21,7 +21,6 @@ class Admin::WordsController < ApplicationController
 		@category = Category.find(params[:category_id])
 		@word = @category.words
 
-		
 	end
 
 	def edit
@@ -32,6 +31,7 @@ class Admin::WordsController < ApplicationController
 
 	def update
 		@word = Word.find(params[:id])
+		@category = Category.find(params[:category_id])
 
 		if @word.update_attributes(word_params)
 			flash[:success] = "Successfully updated" 
