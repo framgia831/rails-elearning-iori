@@ -1,0 +1,7 @@
+<h2>Question Stage2</h2>
+
+<%= @word.content %>
+
+<% @content.each do |content| %>
+	<%= button_to content.content, lesson_lesson_words_path, params: {words_answer_id: content.id, word_id: @word.id} %>
+<% end %>
