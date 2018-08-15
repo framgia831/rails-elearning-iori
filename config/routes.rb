@@ -12,8 +12,11 @@ Rails.application.routes.draw do
   		resources :categories do 
         resources :words
       end
-      
   	end
+
+    resources :lessons do
+      resources :lesson_words
+    end 
   end
 
 

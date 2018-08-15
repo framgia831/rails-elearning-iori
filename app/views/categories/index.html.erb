@@ -2,10 +2,15 @@
 
 <div class="col-sm-6">
 	<section class="col-sm-12">
-		<% @category.each do |category| %>
+		<% @categories.each do |category| %>
 			<h2><%= category.title %></h2>
 			<p><%= category.description %></p>
-			<%= link_to "Learn", "#", class: "btn btn-xs btn-primary" %>
+
+			<%= form_for :lesson, url: lessons_path do |f|%>
+				<%= f.hidden_field :category_id, value: category.id %>
+				<%= f.submit "Learn", class: 'btn btn-primary'%>
+			<% end %>
+
 		<% end %>
 	</section>
 </div>
