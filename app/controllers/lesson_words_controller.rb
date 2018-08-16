@@ -31,10 +31,17 @@ class LessonWordsController < ApplicationController
 
 	def index
 		@lesson = Lesson.find(params[:lesson_id])
-		@lesson.lesson_words
+		@lessonword = @lesson.lesson_words
+		@result = @lesson.words_answer.collect{|i| i.correct || nil }.compact.count
+		
 	end
+ end
 
-end
+
+
+
+
+
 
 
 
