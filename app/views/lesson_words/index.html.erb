@@ -2,6 +2,8 @@
 
 <div class="container">
 	<table class="table">
+		<%= @result %> of <%= @lesson.words.count %> 
+
 		<tr>
 			<th>Word</th>
 			<th>Your Answer</th>
@@ -9,18 +11,19 @@
 			<th>Judgement</th>
 		</tr>
 
-		<% @lesson.lesson_words.each do |lesson_word| %>
+		<% @lessonword.each do |lesson_word| %>
 			<tr>
 				<td><%= lesson_word.word.content %></td>
 				<td><%= lesson_word.words_answer.content %></td>
 				<td><%= lesson_word.word.correct_answer %></td>
-				<td>
+				<td
 					<% if lesson_word.words_answer.correct == true %>
 						 <i class="far fa-check-circle"></i>
+
 					<% else %>
 						 <i class="far fa-times-circle"></i>
 					<% end %>
-				</td>	
+				</td>
 			</tr>
 		<% end %> 
 	</table>
