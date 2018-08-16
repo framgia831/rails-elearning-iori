@@ -3,7 +3,11 @@
 <div class="container">
 	<% @lesson.lesson_words.each do |lesson_word| %>
 		<%= lesson_word.word.content %>
+		<%= lesson_word.words_answer.content %>
+
 	<% end %> 	
+
+	
 	
 
 </div>
