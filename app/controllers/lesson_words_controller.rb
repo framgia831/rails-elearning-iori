@@ -32,9 +32,16 @@ class LessonWordsController < ApplicationController
 	def index
 		@lesson = Lesson.find(params[:lesson_id])
 		@lesson.lesson_words
-	end
 
-end
+
+	end
+ end
+
+
+
+
+
+
 
 
 

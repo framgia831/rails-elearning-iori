@@ -1,13 +1,32 @@
 <h1>Result</h1>
 
 <div class="container">
-	<% @lesson.lesson_words.each do |lesson_word| %>
-		<%= lesson_word.word.content %>
-		<%= lesson_word.words_answer.content %>
+	<table class="table">
+		<tr>
+			<th>Word</th>
+			<th>Your Answer</th>
+			<th>Correct Answer</th>
+			<th>Judgement</th>
+		</tr>
 
-	<% end %> 	
-
-	
-	
-
+		<% @lesson.lesson_words.each do |lesson_word| %>
+			<tr>
+				<td><%= lesson_word.word.content %></td>
+				<td><%= lesson_word.words_answer.content %></td>
+				<td><%= lesson_word.word.correct_answer %></td>
+				<td>
+					<% if lesson_word.words_answer.correct == true %>
+						 <i class="far fa-check-circle"></i>
+					<% else %>
+						 <i class="far fa-times-circle"></i>
+					<% end %>
+				</td>	
+			</tr>
+		<% end %> 
+	</table>
 </div>
+
+
+
+
+			
