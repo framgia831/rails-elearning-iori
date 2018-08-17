@@ -13,6 +13,7 @@
 					<% if current_user.admin? %>
 						<li class="nav-item active"><%= link_to "Manage Categories", admin_categories_path %></li>
 					<% end %>
+					<li class="nav-item active"><%= link_to "Dashboard", dashboards_path %></li>
 					<li class="nav-item active"><%= link_to "Category", categories_path %></li>
 					<li class="nav-item active"><%= link_to "Members", users_path %></li>
 					<li class="nav-item active"><%= link_to "Profile", user_path(current_user) %></li>
