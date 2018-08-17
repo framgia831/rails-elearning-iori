@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 		if  user && user.authenticate(params[:session][:password])
 			log_in user
 			flash[:success] = "Success"
-			redirect_to dashboards_path
+			redirect_to dashboard_path
 		else
 			flash[:danger] = "Invaild information."
 			render 'new'
