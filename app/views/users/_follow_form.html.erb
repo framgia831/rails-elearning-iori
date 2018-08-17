@@ -1,0 +1,15 @@
+<% unless current_user.following?(@user) %>
+
+	<%= form_for :relationship, url: relationships_path do |f| %>
+			<%= f.hidden_field :followed_id, value: @user.id %>
+			<%= f.submit "Follow", class: 'btn btn-warning'%>
+	<%end%>
+
+<% else %>
+	<%= form_for current_user.active_relationships.find_by(followed_id: @user.id), method: :delete do |f| %>
+			
+			<%= f.submit "Unfollow", class: 'btn btn-danger'%>
+	<%end%>
+
+
+<% end %>
