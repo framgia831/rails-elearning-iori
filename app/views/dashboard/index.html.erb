@@ -1,0 +1,19 @@
+<h1>Dashboard</h1>
+	<div class="row">
+		<div class="col-md-4">
+			<section>
+				<div class="media">
+					<div class="media-left">
+						<%= gravatar_for(current_user)%>
+					</div>
+
+					<div class="media-body">
+						<h1><%= current_user.name %></h1>
+							<p><%= current_user.email %></p>
+							<%= link_to "Update profile", edit_user_path(current_user), class: "btn btn-xs btn-warning" %>
+							<%= render 'shared/follow_stats' %>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
