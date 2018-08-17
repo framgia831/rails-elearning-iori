@@ -1,0 +1,19 @@
+<div class="row profile">
+	<div class="col-md-4">
+		<%= render 'shared/user_info' %>
+		<section>
+			<%= render 'shared/follow_stats' %>
+		</section>
+
+	</div>
+
+	<div class="col-md-8">
+		<h3><%= @title %></h3>
+
+		<hr>
+
+		<ul class="users row"> 
+			<%= render @users %>
+		</ul>
+	</div>
+</div>
