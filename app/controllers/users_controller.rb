@@ -66,7 +66,7 @@ class UsersController < ApplicationController
 		@title = "Following"
 		@users = @user.following
 		render 'show_follow'
-	endsss
+	end
 
 
 	private 
