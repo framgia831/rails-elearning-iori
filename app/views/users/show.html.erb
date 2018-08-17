@@ -4,6 +4,11 @@
 			<%= render 'shared/user_info' %>
 		</section>
 
+		<section>
+			<%= render 'shared/follow_stats' %>
+		</section>
+
+
 		<% unless current_user?(@user)%>
 			<section>
 				<%= render 'follow_form' %>
