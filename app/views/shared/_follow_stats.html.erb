@@ -8,6 +8,11 @@
 	<%= link_to following_user_path(@user) do %>
 		<strong><%= @user.following.count %></strong> following
 	<% end %>
+	
+	<p><strong>Word learned <%= @user.lesson_words.count %></strong><p>
  
 
 </div>
+
+
+

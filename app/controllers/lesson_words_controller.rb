@@ -33,7 +33,6 @@ class LessonWordsController < ApplicationController
 		@lesson = Lesson.find(params[:lesson_id])
 		@lessonword = @lesson.lesson_words
 		@result = @lesson.words_answer.collect{|i| i.correct || nil }.compact.count
-		
 	end
  end
 
