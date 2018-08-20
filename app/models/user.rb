@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
 	has_many :lesson_words, through: :lessons
 
+	has_many :activities, dependent: :destroy
+
 	before_save { self.email = email.downcase }
  	validates :name, presence: true, 
 					 length:{ maximum: 50}
@@ -22,7 +24,9 @@ class User < ApplicationRecord
 
  	def follow(other_user)
 		following << other_user
-		
+
+		relationship = active_relationships.find_by(followed: other_user)
+		relationship.activities.create(user: self)
 	end
 
 	def following?(other_user)
