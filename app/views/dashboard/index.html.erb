@@ -11,7 +11,21 @@
 						<h1><%= current_user.name %></h1>
 							<p><%= current_user.email %></p>
 							<%= link_to "Update profile", edit_user_path(current_user), class: "btn btn-xs btn-warning" %>
-							<%= render 'shared/follow_stats' %>
+							<% @user ||= current_user %>
+
+						<div class="stats">
+							<%= link_to followers_user_path(@user) do %>
+								<strong><%= @user.followers.count %></strong> followers
+							<% end %>
+
+							<%= link_to following_user_path(@user) do %>
+								<strong><%= @user.following.count %></strong> following
+							<% end %>
+							
+							<%= link_to words_path do %>
+								<p><strong>Word learned <%= @user.lesson_words.count %></strong><p>
+							<% end %>
+						</div>
 					</div>
 				</div>
 			</section>

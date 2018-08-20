@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-md-4">
+		<section>
+			<div class="media">
+				<div class="media-left">
+					<%= gravatar_for(current_user)%>
+				</div>
+
+				<div class="media-body">
+					<h1><%= current_user.name %></h1>
+						<p><%= current_user.email %></p>
+						<%= link_to "Update profile", edit_user_path(current_user), class: "btn btn-xs btn-warning" %>
+						<% @user ||= current_user %>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div class="col-md-8">
+		<section>
+			<table>
+				<tr>
+					<th>Words</th>
+					<th>Your Answer</th>
+					<th>Correct Answer</th>
+				</tr>
+
+				<% @lessonword.each do |lesson_word| %>
+				<tr>
+					<td><%= lesson_word.word.content %></td>
+					<td><%= lesson_word.words_answer.content %></td>
+					<td><%= lesson_word.word.correct_answer %></td>
+				</tr>
+				<% end %>
+				
+			</table>
+		</section>
+	</div>
+</div>
