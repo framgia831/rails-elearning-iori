@@ -43,7 +43,7 @@
 							</div>
 						<% else %>
 							<div>
-								<%= link_to activity.user.name, user_path(activity.user.id) %> learned <%= link_to activity.action.category.title, lesson_lesson_words_path(activity.action.category.id) %>
+								<%= link_to activity.user.name, user_path(activity.user.id) %> learned <%= link_to activity.action.category.title, lesson_lesson_words_path(activity.action.id) %>
 							</div>
 						<% end %>
 
