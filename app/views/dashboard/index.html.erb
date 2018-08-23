@@ -36,10 +36,20 @@
 				<div>
 					<h3>Activity Feeds</h3>
 					<% @activities.each do |activity| %>
-						<%= link_to activity.user.name, user_path(activity.user.id) %> followed <%= link_to activity.action.followed.name, user_path(activity.action.followed.id) %>
-					<% end %>
-				</div>
+				
+						<% if activity.action_type == "Relationship" %>
+							<div>
+								<%= link_to activity.user.name, user_path(activity.user.id) %> followed <%= link_to activity.action.followed.name, user_path(activity.action.followed.id) %>
+							</div>
+						<% else %>
+							<div>
+								<%= link_to activity.user.name, user_path(activity.user.id) %> learned <%= link_to activity.action.category.title, lesson_lesson_words_path(activity.action.id) %>
+							</div>
+						<% end %>
 
+					<% end %>
+
+				</div>
 			</section>
 		</div>
 	</div>

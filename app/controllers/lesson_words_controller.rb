@@ -23,6 +23,7 @@ class LessonWordsController < ApplicationController
 			if @next.any?
 				redirect_to new_lesson_lesson_word_path(@lesson)
 			else
+				@lesson.activities.create(user: current_user)
 				redirect_to lesson_lesson_words_path
 			end
 		end
