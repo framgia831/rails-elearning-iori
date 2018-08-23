@@ -8,12 +8,12 @@ class LessonsController < ApplicationController
 		
 		if @lesson.save
 			# flash[:success] = "Successfully saved"  
+			@lesson.activities.create(user: current_user)
 			redirect_to new_lesson_lesson_word_path(@lesson)
 		else
 			root_path
 		end
 	end
-
 
 
 	private 

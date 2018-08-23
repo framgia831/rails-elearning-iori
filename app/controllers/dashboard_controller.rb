@@ -3,6 +3,8 @@ class DashboardController < ApplicationController
 		user = current_user
 		@activities = user.activities
 		
+
+		
 	end
 
 end
