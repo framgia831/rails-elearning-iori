@@ -1,35 +1,45 @@
-<h1>Result</h1>
+<div class="container container-small"">
+	<div class="row">
+		<div class="col-sm-8 col-center">
+			<div class="row">
+				<div class="col-sm-6">
+					<h1></h1>
+				</div>
 
-<div class="container">
-	<table class="table">
-		<%= @result %> of <%= @lesson.words.count %> 
+				<div class="col-sm-6 text-right result">
+					<strong>Result: <%= @result %> of <%= @lesson.words.count %> </strong>
+				</div>
+			</div>
 
-		<tr>
-			<th>Word</th>
-			<th>Your Answer</th>
-			<th>Correct Answer</th>
-			<th>Judgement</th>
-		</tr>
+			<div class="row">
+				<table class="table result">
+					<tbody>
+						<tr>
+							<th>Word</th>
+							<th>Your Answer</th>
+							<th>Correct Answer</th>
+							<th></th>
+						</tr>
 
-		<% @lessonword.each do |lesson_word| %>
-			<tr>
-				<td><%= lesson_word.word.content %></td>
-				<td><%= lesson_word.words_answer.content %></td>
-				<td><%= lesson_word.word.correct_answer %></td>
-				<td
-					<% if lesson_word.words_answer.correct == true %>
-						 <i class="far fa-check-circle"></i>
+						<% @lessonword.each do |lesson_word| %>
+							<tr>
+								<td><%= lesson_word.word.content %></td>
+								<td><%= lesson_word.words_answer.content %></td>
+								<td><%= lesson_word.word.correct_answer %></td>
+								<td>
+									<% if lesson_word.words_answer.correct == true %>
+										 <i class="far fa-check-circle"></i>
 
-					<% else %>
-						 <i class="far fa-times-circle"></i>
-					<% end %>
-				</td>
-			</tr>
-		<% end %> 
-	</table>
+									<% else %>
+										 <i class="far fa-times-circle"></i>
+									<% end %>
+								</td>
+							</tr>
+						<% end %> 
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
-
-
-
-
 			

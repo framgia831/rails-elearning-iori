@@ -1,11 +1,19 @@
-<h1>All Users</h1>
+<div class="row">
+	<div class="col-sm-6">
+		<h3>All Users</h3>
+	</div>
 
-<%= will_paginate %>
+	<div class="col-sm-6 text-right">
+		<%= will_paginate %>
+	</div>
+</div>
 
-<ul class="users row">
+<div class="row object-list">
 	<%= render @users %> 
-</ul>
+</div>
 
-
-
-<%= will_paginate %>
+<div class="row">
+	<div class="text-center">
+		<%= will_paginate %>
+	</div>
+</div>

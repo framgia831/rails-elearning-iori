@@ -1,17 +1,27 @@
-<div class="row">
-	<div class="col-md-6">
-		<h4>Admin Word Show Page</h4>
-		<%= link_to "ADD WORD", new_admin_category_word_path(@category) %>
+<div class="container container-small">
+	<div class="panel">
+		<div class= "panel-heading">
+			<div class="row">
+				<div class="col-sm-6">
+					<span><strong>Admin Word Show Page</strong></span>
+				</div>
 
-			<table class="table">
+				<div class="col-sm-6 text-right">
+					<%= link_to "ADD WORD", new_admin_category_word_path(@category), class: "btn btn-success"%>
+					<%= link_to "BACK", admin_categories_path, class: "btn"%>
+				</div>
+			</div>
+		</div>
+
+		<table class="table">
+			<tbody>
 				<tr>
 					<th>Word</th>
 					<th>Answer</th>
 					<th>Action</th>
 				</tr>
-
-				
-					<% @word.each do |word| %>
+			
+				<% @word.each do |word| %>
 					<tr>
 						<td><%= word.content %></td>
 						<td><%= word.correct_answer %></td>
@@ -19,7 +29,8 @@
 							<%= link_to "Delete", admin_category_word_path(@category, word),method: :delete, class: "btn btn-xs btn-light", data:{confirm: "Are you sure?"} %>
 						</td>
 					</tr>
-					<% end %>
-			</table>
+				<% end %>
+			</tbody>
+		</table>
 	</div>
 </div>

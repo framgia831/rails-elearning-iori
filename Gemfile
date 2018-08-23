@@ -28,9 +28,12 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.1.3'
+# gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap-sass', '~> 3.3.7'
 gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'font-awesome-sass', '~> 5.2.0'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

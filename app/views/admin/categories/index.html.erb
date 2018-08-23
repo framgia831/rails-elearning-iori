@@ -1,9 +1,19 @@
-<div class="row">
-	<div class="col-md-6">
-		<h4>Category</h4>
-		<%= link_to "ADD CATEGORY", new_admin_category_path %>
+<div class="container container-small">
+	<div class="panel">
+		<div class= "panel-heading">
+			<div class="row">
+				<div class="col-sm-6">
+					<span><strong>Admin | Categories</strong></span>
+				</div>
 
-			<table class="table">
+				<div class="col-sm-6 text-right">
+					<%= link_to "ADD CATEGORY", new_admin_category_path, class: "btn btn-success" %>
+				</div>
+			</div>
+		</div>
+
+		<table class="table">
+			<tbody>
 				<tr>
 					<th>Title</th>
 					<th>Description</th>
@@ -11,8 +21,7 @@
 					<th>Action</th>
 				</tr>
 
-				
-					<% @categories.each do |category| %>
+				<% @categories.each do |category| %>
 					<tr>
 						<td><%=link_to category.title, admin_category_words_path(category.id) %></td>
 						<td><%= category.description %></td>
@@ -21,7 +30,12 @@
 							<%= link_to "Delete", admin_category_path(category.id), method: :delete, class: "btn btn-xs btn-light", data:{confirm: "Are you sure?"} %>
 						</td>
 					</tr>
-					<% end %>
-			</table>
+				<% end %>
+			</tbody>
+		</table>
+
+		<div class="panel-footer text-center">
+			<%#= will_paginate %>
+		</div>
 	</div>
 </div>
