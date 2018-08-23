@@ -1,7 +1,27 @@
-<h2>Question Stage2</h2>
+<div class="container container-small"">
+	<div class="row">
+		<div class="col-sm-8 col-center">
+			<div class="row">
+				<div class="col-sm-6">
+					<h2></h2>
+				</div>
 
-<%= @word.content %>
+				<!-- <div class="col-sm-6 text-right">
+					aaaa
+				</div> -->
+			</div>
 
-<% @content.each do |content| %>
-	<%= button_to content.content, lesson_lesson_words_path, params: {words_answer_id: content.id, word_id: @word.id} %>
-<% end %>
+			<div class="row">
+				<div class="form-container">
+					<div class="col-sm-10 col-center text-center">
+						<h2><%= @word.content %></h2>
+
+						<% @content.each do |content| %>
+							<%= button_to content.content, lesson_lesson_words_path, params: {words_answer_id: content.id, word_id: @word.id}, class: "btn btn-defalt" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,43 +1,62 @@
-<div class="container">
-	<div class="col-xs-6 col-xs-offset-3 ">
-		<h1 class="text-center">Admin Words</h1>
-		
-		<%= form_for ([:admin, @category, @word]) do |f| %>
-			<% if @word.errors.any? %>
-				<div class="alert alert-danger">
-					This form contains <%= pluralize(@word.errors.count, "error") %>
+<div class="container container-small">
+	<div class="panel">
+		<div class= "panel-heading">
+			<div class="row">
+				<div class="col-sm-6">
+					<span><strong>Admin Words</strong></span>
 				</div>
 
-				<ul>
-					<% @word.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
+				<div class="col-sm-6 text-right">
+					<%#= link_to "BACK", admin_category_words_path(category.id) %>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel-body">
+
+			<div class="row">
+				<div class="col-md-8 col-center">
+					<%= form_for ([:admin, @category, @word]) do |f| %>
+						<% if @word.errors.any? %>
+							<div class="alert alert-danger">
+								This form contains <%= pluralize(@word.errors.count, "error") %>
+							</div>
+							<ul>
+								<% @word.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+								<% end %>
+							</ul>
+						<% end %>
+
+						<div class="form-group row">
+								<div class="col-sm-2">
+									<%= f.label :content,"Word" %>
+								</div>
+								
+								<div class="col-sm-10">
+									<%= f.text_field :content, class:'form-control' %>
+								</div>
+						</div>
+
+						<div class="form-group row">
+							<%=f .fields_for :words_answers do |field| %>
+								<div class="col-sm-3">
+									<%= field.label :content,"Choices" %>
+								</div>
+								
+								<div class="col-sm-9">
+									<%= field.text_field :content, class:'form-control' %>
+									<%= field.check_box :correct, class:'form-control' %>
+								</div>
+							<% end %>
+						</div>
+	
+						<div class="form-group">
+							<%= f.submit class: 'btn btn-success form-control'%>
+						</div>
 					<% end %>
-				</ul>
-
-			<% end %>
-
-
-			<div class="form-group">
-				<%= f.label :content,"Word" %>
-				<%= f.text_field :content, class:'form-control' %>
+				</div>
 			</div>
-
-			<div class="field">
-				<%=f .fields_for :words_answers do |field| %>
-					<%= field.label :content,"Choices" %>
-
-					<div class="form-group">
-						<%= field.text_field :content, class:'form-control' %>
-						<%= field.check_box :correct, class:'form-control' %>
-					</div>
-
-				<% end %>
-			</div>
-
-			<div class="form-group">
-				<%= f.submit class: 'btn btn-primary form-control'%>
-			</div>
-		<% end %>
-
-	</div>	
-</div>	
+		</div>
+	</div>
+</div>
