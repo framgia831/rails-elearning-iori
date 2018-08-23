@@ -38,9 +38,6 @@
 					<% @activities.each do |activity| %>
 						<%= link_to activity.user.name, user_path(activity.user.id) %> followed <%= link_to activity.action.followed.name, user_path(activity.action.followed.id) %>
 					<% end %>
-
-
-
 				</div>
 
 			</section>
