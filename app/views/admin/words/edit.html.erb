@@ -46,7 +46,8 @@
 								
 								<div class="col-sm-9">
 									<%= field.text_field :content, class:'form-control' %>
-									<%= field.check_box :correct, class:'form-control' %>
+									<%= field.check_box :correct %>
+									<%= field.label :correct, "Correct" %>
 								</div>
 							<% end %>
 						</div>

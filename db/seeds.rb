@@ -11,7 +11,6 @@ User.create!(name: "Admin",
 			 password: "admin0000",
 			 admin: "true")
 
-
 require 'faker'
 
 50.times do |i|
@@ -19,4 +18,29 @@ require 'faker'
 		name: Faker::Pokemon.name, 
 		email: Faker::Internet.email, 
 		password: "password")
+end
+
+
+5.times do |i|
+	category = Category.create!(
+		title: Faker::Job.title,
+		description: Faker::Job.field
+		)
+	
+	5.times do
+		word = category.words.build(
+			content: Faker::Job.position
+		    )
+
+		3.times do
+			word.words_answers.build(
+				content: Faker::Lorem.unique.word
+				)
+		end
+
+		random_num = rand(0..2)
+		word.words_answers[random_num].correct = true
+
+	    word.save!
+	end
 end

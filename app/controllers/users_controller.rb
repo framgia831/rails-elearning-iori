@@ -21,6 +21,9 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		user = User.find(params[:id])
+		@activities = user.activities
+
 		if logged_in?
 			session[:user_id]
 			@user = User.find(params[:id])
@@ -66,6 +69,14 @@ class UsersController < ApplicationController
 		@title = "Following"
 		@users = @user.following
 		render 'show_follow'
+	end
+	
+	def destroy
+		@user = User.find(params[:id])
+		@user.destroy
+			# flash[:success] = "User #{@user.name} has been removed."
+
+		redirect_to users_url
 	end
 
 

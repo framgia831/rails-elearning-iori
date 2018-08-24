@@ -10,10 +10,14 @@
 				</div>
 				
 				<div class="btn-wrapper text-right">
-					<%= form_for :lesson, url: lessons_path do |f|%>
-						<%= f.hidden_field :category_id, value: category.id %>
-						<%= f.submit "LEARN", class: 'btn btn-primary'%>
-				<% end %>
+					<% if lesson = current_user.lessons.find_by(category_id: category.id) %>
+						<%= link_to "Already Learned",lesson_lesson_words_path(lesson.id), class: 'btn btn-defalt' %>
+					<% else %>
+						<%= form_for :lesson, url: lessons_path do |f|%>
+							<%= f.hidden_field :category_id, value: category.id %>
+							<%= f.submit "LEARN", class: 'btn btn-primary'%>
+						<% end %>
+					<% end %>
 				</div>
 				
 			</section>

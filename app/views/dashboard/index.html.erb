@@ -1,55 +1,91 @@
-<h1>Dashboard</h1>
+<div class="container container-small"">
 	<div class="row">
-		<div class="col-md-4">
-			<section>
-				<div class="media">
-					<div class="media-left">
-						<%= gravatar_for(current_user)%>
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="heading">User Information</span>
+				</div>
+
+				<div class="panel-body">
+					<div class="user_info text-center">
+						<div class="avatar">
+							<%= gravatar_for(current_user)%>
+						</div>
+						
+						<h3><%= current_user.name %></h3>
+
+						<div class="text-gray mb-15"">
+							<%= current_user.email %>
+						</div>
+
+						<%= link_to "Update profile", edit_user_path(current_user), class: "btn btn-xs btn-warning" %>
+						<% @user ||= current_user %>
 					</div>
+				</div>
+			</div>	
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="heading">User Stats</span>
+				</div>
 
-					<div class="media-body">
-						<h1><%= current_user.name %></h1>
-							<p><%= current_user.email %></p>
-							<%= link_to "Update profile", edit_user_path(current_user), class: "btn btn-xs btn-warning" %>
-							<% @user ||= current_user %>
-
-						<div class="stats">
-							<%= link_to followers_user_path(@user) do %>
-								<strong><%= @user.followers.count %></strong> followers
-							<% end %>
-
-							<%= link_to following_user_path(@user) do %>
-								<strong><%= @user.following.count %></strong> following
-							<% end %>
-							
+				<div class="panel-body">
+					<div class="learned_info text-center">
+						<div class="btn-group btn-group-justified">
 							<%= link_to words_path do %>
 								<p><strong>Word learned <%= @user.lesson_words.count %></strong><p>
 							<% end %>
 						</div>
+
+						<div class="btn-group btn-group-justified mt-20">
+							<div class="btn btn-default">
+								<%= link_to followers_user_path(@user) do %>
+									<strong><%= @user.followers.count %></strong> followers
+								<% end %>
+							</div>
+							
+							<div class="btn btn-default">
+								<%= link_to following_user_path(@user) do %>
+									<strong><%= @user.following.count %></strong> following
+								<% end %>
+							</div>
+
+						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 
-		<div class="col-md-8">
-			<section>
-				<div>
-					<h3>Activity Feeds</h3>
-					<% @activities.each do |activity| %>
-				
-						<% if activity.action_type == "Relationship" %>
-							<div>
-								<%= link_to activity.user.name, user_path(activity.user.id) %> followed <%= link_to activity.action.followed.name, user_path(activity.action.followed.id) %>
-							</div>
-						<% else %>
-							<div>
-								<%= link_to activity.user.name, user_path(activity.user.id) %> learned <%= link_to activity.action.category.title, lesson_lesson_words_path(activity.action.id) %>
-							</div>
-						<% end %>
-
-					<% end %>
-
+		<div class="col-sm-8">
+			<div class="panel panel-default activity-feed">
+				<div class="panel-heading">
+					<span class="heading">Activity Feeds</span>
 				</div>
-			</section>
+
+				<div class="panel-body">
+					<% @activities.each do |activity| %>
+						<div class="media">
+							<div class="media-left media-middle">
+								<%= gravatar_for(activity.user, 50)%>
+							</div>
+							
+							<div class="media-body media-middle">
+								<% if activity.action_type == "Relationship" %>
+									<div>
+										<%= link_to activity.user.name, user_path(activity.user.id) %> followed <%= link_to activity.action.followed.name, user_path(activity.action.followed.id) %>
+										<p><small><%= time_ago_in_words(activity.created_at) %> ago</small></p>
+									</div>
+								<% else %>
+									<div>
+										<%= link_to activity.user.name, user_path(activity.user.id) %> learned <%= link_to activity.action.category.title, lesson_lesson_words_path(activity.action.id) %>
+										<p><small><%= time_ago_in_words(activity.created_at) %> ago</small></p>
+									</div>
+								<% end %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
+</div>

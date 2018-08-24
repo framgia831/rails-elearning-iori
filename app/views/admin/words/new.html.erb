@@ -39,14 +39,15 @@
 						</div>
 
 						<div class="form-group row">
-							<%=f .fields_for :words_answers do |field| %>
+							<%= f.fields_for :words_answers do |field| %>
 								<div class="col-sm-3">
 									<%= field.label :content,"Choices" %>
 								</div>
 								
 								<div class="col-sm-9">
 									<%= field.text_field :content, class:'form-control' %>
-									<%= field.check_box :correct, class:'form-control' %>
+									<%= field.check_box :correct %>
+									<%= field.label :correct, "Correct" %>
 								</div>
 							<% end %>
 						</div>
