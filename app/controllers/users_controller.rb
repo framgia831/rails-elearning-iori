@@ -21,6 +21,9 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		user = User.find(params[:id])
+		@activities = user.activities
+
 		if logged_in?
 			session[:user_id]
 			@user = User.find(params[:id])

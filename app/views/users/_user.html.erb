@@ -9,7 +9,7 @@
 					<div class="media-body media-middle">
 						<div class="media-heading">
 							<strong><%=link_to user.name, user_path(user.id) %></strong>
-
+							
 							<% if current_user.admin? && current_user != user %>
 								<div class="pull-right">
 									<%= link_to "Delete", user, method: :delete, class: "btn btn-xs", data:{confirm: "Are you sure?"} %>

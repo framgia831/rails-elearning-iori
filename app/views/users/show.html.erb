@@ -1,18 +1,52 @@
-<div class="container">
+<div class="container container-small">
 	<div class="col-sm-3">
-		<section>
-			<%= render 'shared/user_info' %>
-		</section>
+		<div class="panel">
+			<div class="panel-body">
+				<div class="text-center">
+					<%= render 'shared/user_info' %>
+					<% unless current_user?(@user)%>
+						<%= render 'follow_form' %>
+					<% end %>
+				</div>
 
-		<section>
-			<%= render 'shared/follow_stats' %>
-		</section>
+				<hr>
 
+				<div class="row mt-15">
+					<%= render 'shared/follow_stats' %>
+				</div>
+			</div>
+		</div>
+	</div>
 
-		<% unless current_user?(@user)%>
-			<section>
-				<%= render 'follow_form' %>
-			</section>
-		<% end %>
-	</div>	
+	<div class="col-sm-8">
+		<div class="panel panel-default activity-feed">
+			<div class="panel-heading">
+				<span class="heading">Activity Feeds</span>
+			</div>
+
+			<div class="panel-body">
+				<% @activities.each do |activity| %>
+					<div class="media">
+						<div class="media-left media-middle">
+							<%= gravatar_for(activity.user, 50)%>
+						</div>
+						
+						<div class="media-body media-middle">
+							<% if activity.action_type == "Relationship" %>
+								<div>
+									<%= link_to activity.user.name, user_path(activity.user.id) %> followed <%= link_to activity.action.followed.name, user_path(activity.action.followed.id) %>
+									<p><small><%= time_ago_in_words(activity.created_at) %> ago</small></p>
+								</div>
+							<% else %>
+								<div>
+									<%= link_to activity.user.name, user_path(activity.user.id) %> learned <%= link_to activity.action.category.title, lesson_lesson_words_path(activity.action.id) %>
+									<p><small><%= time_ago_in_words(activity.created_at) %> ago</small></p>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

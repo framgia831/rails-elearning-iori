@@ -39,8 +39,5 @@ class User < ApplicationRecord
 		relationship.activities.first.destroy
 
 		following.delete(other_user)
-
-		
-		
 	end
 end
