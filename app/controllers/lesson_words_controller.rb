@@ -1,4 +1,6 @@
 class LessonWordsController < ApplicationController
+	before_action :require_login
+
 	def new
 		@lesson = Lesson.find(params[:lesson_id])
 		@category = @lesson.category 

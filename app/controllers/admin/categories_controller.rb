@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+	before_action :require_login
+	before_action :admin_user
 
 	def index
 		@categories = Category.all
@@ -49,5 +51,13 @@ class Admin::CategoriesController < ApplicationController
 	private
 		def category_params
 			params.require(:category).permit(:title, :description)
+		end
+
+		def admin_user
+			unless current_user.admin?
+				flash[:info] = "You are not allowed to do that"
+				redirect_to users_url
+			end
+			
 		end
 end

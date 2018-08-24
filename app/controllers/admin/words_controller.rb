@@ -1,4 +1,6 @@
 class Admin::WordsController < ApplicationController
+	before_action :require_login
+	before_action :admin_user
 	def new
 		@category = Category.find(params[:category_id])
 		@word = @category.words.build
@@ -56,5 +58,12 @@ class Admin::WordsController < ApplicationController
 	private
 		def word_params
 			params.require(:word).permit(:content, words_answers_attributes: [:id,:content,:correct])
+		end
+		
+		def admin_user
+			unless current_user.admin?
+				flash[:info] = "You are not allowed to do that"
+				redirect_to users_url
+			end
 		end
 end

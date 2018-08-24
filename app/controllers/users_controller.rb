@@ -70,6 +70,14 @@ class UsersController < ApplicationController
 		@users = @user.following
 		render 'show_follow'
 	end
+	
+	def destroy
+		@user = User.find(params[:id])
+		@user.destroy
+			# flash[:success] = "User #{@user.name} has been removed."
+
+		redirect_to users_url
+	end
 
 
 	private 
