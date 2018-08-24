@@ -34,7 +34,7 @@ end
 
 		3.times do
 			word.words_answers.build(
-				content: Faker::Job.unique.employment_type
+				content: Faker::Lorem.unique.words
 				)
 		end
 
